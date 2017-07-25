@@ -93,7 +93,7 @@ LIS3MDLSensor::LIS3MDLSensor(TwoWire *i2c) : dev_i2c(i2c)
  * @param i2c object of an helper class which handles the I2C peripheral
  * @param address the address of the component's instance
  */
-LIS3MDLSensor::LIS3MDLSensor(TwoWire *i2c, uint8_t address) : dev_i2c(i2c), address(address)
+LIS3MDLSensor::LIS3MDLSensor(TwoWire *i2c, uint8_t address) : address(address), dev_i2c(i2c)
 {
   /* Operating mode selection - power down */
   if ( LIS3MDL_MAG_W_SystemOperatingMode( (void *)this, LIS3MDL_MAG_MD_POWER_DOWN ) == MEMS_ERROR )
@@ -168,10 +168,10 @@ LIS3MDLStatusTypeDef LIS3MDLSensor::Disable(void)
 LIS3MDLStatusTypeDef LIS3MDLSensor::ReadID(uint8_t *p_id)
 {
   if(!p_id)
-  { 
-    return LIS3MDL_STATUS_ERROR; 
+  {
+    return LIS3MDL_STATUS_ERROR;
   }
- 
+
   /* Read WHO AM I register */
   if ( LIS3MDL_MAG_R_WHO_AM_I_( (void *)this, p_id ) == MEMS_ERROR )
   {
