@@ -53,8 +53,6 @@
 // Components.
 LIS3MDLSensor *Magneto;
 
-char report[256];
-
 void setup() {
   // Led.
   pinMode(13, OUTPUT);
@@ -71,8 +69,6 @@ void setup() {
 }
 
 void loop() {
-  char report[256];
-  
   // Led blinking.
   digitalWrite(13, HIGH);
   delay(250);
