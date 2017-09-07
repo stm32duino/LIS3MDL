@@ -3,7 +3,7 @@
  * @file    X_NUCLEO_IKS01A1_LIS3MDL_DataLog_Terminal.ino
  * @author  AST
  * @version V1.0.0
- * @date    5 August 2016
+ * @date    7 September 2017
  * @brief   Arduino test application for the STMicrolectronics X-NUCLEO-IKS01A1
  *          MEMS Inertial and Environmental sensor expansion board.
  *          This application makes use of C++ classes obtained from the C
@@ -11,7 +11,7 @@
  ******************************************************************************
  * @attention
  *
- * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
+ * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
  *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -69,9 +69,6 @@ void setup() {
   Magneto = new LIS3MDLSensor(&DEV_I2C);
   Magneto->Enable();
 }
-
-
-/* Loop ----------------------------------------------------------------------*/
 
 void loop() {
   char report[256];

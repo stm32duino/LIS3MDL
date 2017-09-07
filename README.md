@@ -1,5 +1,5 @@
 # LIS3MDL
-Arduino library to support the LIS3MDL high-performance 3-axis magnetometer
+Arduino library to support the LIS3MDL high-performance 3D magnetometer
 
 ## API
 
