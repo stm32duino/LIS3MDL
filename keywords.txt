@@ -1,0 +1,37 @@
+#######################################
+# Syntax Coloring Map For LIS3MDL
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LIS3MDLSensor	KEYWORD1	LIS3MDLSensor
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+Enable						KEYWORD2
+Disable						KEYWORD2
+ReadID						KEYWORD2
+GetODR						KEYWORD2
+SetODR						KEYWORD2
+ReadReg						KEYWORD2
+WriteReg					KEYWORD2
+IO_Read						KEYWORD2
+IO_Write					KEYWORD2
+GetAxes						KEYWORD2
+GetSensitivity				KEYWORD2
+GetAxesRaw					KEYWORD2
+GetFS						KEYWORD2
+SetFS						KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+LIS3MDL_MAG_SENSITIVITY_FOR_FS_4G						LITERAL1
+LIS3MDL_MAG_SENSITIVITY_FOR_FS_8G						LITERAL1
+LIS3MDL_MAG_SENSITIVITY_FOR_FS_12G						LITERAL1
+LIS3MDL_MAG_SENSITIVITY_FOR_FS_16G						LITERAL1
