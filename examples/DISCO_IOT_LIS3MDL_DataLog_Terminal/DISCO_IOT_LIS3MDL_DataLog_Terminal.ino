@@ -43,8 +43,8 @@
 #include <LIS3MDLSensor.h>
 
 #define SerialPort Serial
-#define I2C2_SCL    D33
-#define I2C2_SDA    D34
+#define I2C2_SCL    PB10
+#define I2C2_SDA    PB11
 
 // Components.
 LIS3MDLSensor *Magneto;
