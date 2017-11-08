@@ -85,7 +85,7 @@ typedef union{
 typedef enum {
   MEMS_SUCCESS				=		0x01,
   MEMS_ERROR				=		0x00	
-} status_t;
+} mems_status_t;
 
 #endif /*__SHARED__TYPES*/
 
@@ -131,7 +131,7 @@ typedef enum {
 * Bit Group Name: None
 * Permission    : W
 *******************************************************************************/
-status_t LIS3MDL_MAG_WriteReg( void *handle, u8_t Reg, u8_t *Bufp, u16_t len );
+mems_status_t LIS3MDL_MAG_WriteReg( void *handle, u8_t Reg, u8_t *Bufp, u16_t len );
 
 /*******************************************************************************
 * Register      : Generic - All
@@ -139,7 +139,7 @@ status_t LIS3MDL_MAG_WriteReg( void *handle, u8_t Reg, u8_t *Bufp, u16_t len );
 * Bit Group Name: None
 * Permission    : R
 *******************************************************************************/
-status_t LIS3MDL_MAG_ReadReg( void *handle, u8_t Reg, u8_t *Bufp, u16_t len );
+mems_status_t LIS3MDL_MAG_ReadReg( void *handle, u8_t Reg, u8_t *Bufp, u16_t len );
 
 /**************** Base Function  *******************/
 
@@ -151,7 +151,7 @@ status_t LIS3MDL_MAG_ReadReg( void *handle, u8_t Reg, u8_t *Bufp, u16_t len );
 *******************************************************************************/
 #define  	LIS3MDL_MAG_WHO_AM_I_BIT_MASK  	0xFF
 #define  	LIS3MDL_MAG_WHO_AM_I_BIT_POSITION  	0
-status_t LIS3MDL_MAG_R_WHO_AM_I_(void *handle, u8_t *value);
+mems_status_t LIS3MDL_MAG_R_WHO_AM_I_(void *handle, u8_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG3
@@ -167,8 +167,8 @@ typedef enum {
 } LIS3MDL_MAG_MD_t;
 
 #define  	LIS3MDL_MAG_MD_MASK  	0x03
-status_t  LIS3MDL_MAG_W_SystemOperatingMode(void *handle, LIS3MDL_MAG_MD_t newValue);
-status_t LIS3MDL_MAG_R_SystemOperatingMode(void *handle, LIS3MDL_MAG_MD_t *value);
+mems_status_t  LIS3MDL_MAG_W_SystemOperatingMode(void *handle, LIS3MDL_MAG_MD_t newValue);
+mems_status_t LIS3MDL_MAG_R_SystemOperatingMode(void *handle, LIS3MDL_MAG_MD_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG5
@@ -182,8 +182,8 @@ typedef enum {
 } LIS3MDL_MAG_BDU_t;
 
 #define  	LIS3MDL_MAG_BDU_MASK  	0x40
-status_t  LIS3MDL_MAG_W_BlockDataUpdate(void *handle, LIS3MDL_MAG_BDU_t newValue);
-status_t LIS3MDL_MAG_R_BlockDataUpdate(void *handle, LIS3MDL_MAG_BDU_t *value);
+mems_status_t  LIS3MDL_MAG_W_BlockDataUpdate(void *handle, LIS3MDL_MAG_BDU_t newValue);
+mems_status_t LIS3MDL_MAG_R_BlockDataUpdate(void *handle, LIS3MDL_MAG_BDU_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG2
@@ -199,8 +199,8 @@ typedef enum {
 } LIS3MDL_MAG_FS_t;
 
 #define  	LIS3MDL_MAG_FS_MASK  	0x60
-status_t  LIS3MDL_MAG_W_FullScale(void *handle, LIS3MDL_MAG_FS_t newValue);
-status_t LIS3MDL_MAG_R_FullScale(void *handle, LIS3MDL_MAG_FS_t *value);
+mems_status_t  LIS3MDL_MAG_W_FullScale(void *handle, LIS3MDL_MAG_FS_t newValue);
+mems_status_t LIS3MDL_MAG_R_FullScale(void *handle, LIS3MDL_MAG_FS_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG1
@@ -220,15 +220,15 @@ typedef enum {
 } LIS3MDL_MAG_DO_t;
 
 #define  	LIS3MDL_MAG_DO_MASK  	0x1C
-status_t  LIS3MDL_MAG_W_OutputDataRate(void *handle, LIS3MDL_MAG_DO_t newValue);
-status_t LIS3MDL_MAG_R_OutputDataRate(void *handle, LIS3MDL_MAG_DO_t *value);
+mems_status_t  LIS3MDL_MAG_W_OutputDataRate(void *handle, LIS3MDL_MAG_DO_t newValue);
+mems_status_t LIS3MDL_MAG_R_OutputDataRate(void *handle, LIS3MDL_MAG_DO_t *value);
 
 /*******************************************************************************
 * Register      : <REGISTER_L> - <REGISTER_H>
 * Output Type   : Magnetic
 * Permission    : RO 
 *******************************************************************************/
-status_t LIS3MDL_MAG_Get_Magnetic(void *handle, u8_t *buff);
+mems_status_t LIS3MDL_MAG_Get_Magnetic(void *handle, u8_t *buff);
 
 /**************** Advanced Function  *******************/
 
@@ -244,8 +244,8 @@ typedef enum {
 } LIS3MDL_MAG_ST_t;
 
 #define  	LIS3MDL_MAG_ST_MASK  	0x01
-status_t  LIS3MDL_MAG_W_SelfTest(void *handle, LIS3MDL_MAG_ST_t newValue);
-status_t LIS3MDL_MAG_R_SelfTest(void *handle, LIS3MDL_MAG_ST_t *value);
+mems_status_t  LIS3MDL_MAG_W_SelfTest(void *handle, LIS3MDL_MAG_ST_t newValue);
+mems_status_t LIS3MDL_MAG_R_SelfTest(void *handle, LIS3MDL_MAG_ST_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG1
@@ -261,8 +261,8 @@ typedef enum {
 } LIS3MDL_MAG_OM_t;
 
 #define  	LIS3MDL_MAG_OM_MASK  	0x60
-status_t  LIS3MDL_MAG_W_OperatingModeXY(void *handle, LIS3MDL_MAG_OM_t newValue);
-status_t LIS3MDL_MAG_R_OperatingModeXY(void *handle, LIS3MDL_MAG_OM_t *value);
+mems_status_t  LIS3MDL_MAG_W_OperatingModeXY(void *handle, LIS3MDL_MAG_OM_t newValue);
+mems_status_t LIS3MDL_MAG_R_OperatingModeXY(void *handle, LIS3MDL_MAG_OM_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG1
@@ -276,8 +276,8 @@ typedef enum {
 } LIS3MDL_MAG_TEMP_EN_t;
 
 #define  	LIS3MDL_MAG_TEMP_EN_MASK  	0x80
-status_t  LIS3MDL_MAG_W_TemperatureSensor(void *handle, LIS3MDL_MAG_TEMP_EN_t newValue);
-status_t LIS3MDL_MAG_R_TemperatureSensor(void *handle, LIS3MDL_MAG_TEMP_EN_t *value);
+mems_status_t  LIS3MDL_MAG_W_TemperatureSensor(void *handle, LIS3MDL_MAG_TEMP_EN_t newValue);
+mems_status_t LIS3MDL_MAG_R_TemperatureSensor(void *handle, LIS3MDL_MAG_TEMP_EN_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG2
@@ -291,8 +291,8 @@ typedef enum {
 } LIS3MDL_MAG_SOFT_RST_t;
 
 #define  	LIS3MDL_MAG_SOFT_RST_MASK  	0x04
-status_t  LIS3MDL_MAG_W_SoftRST(void *handle, LIS3MDL_MAG_SOFT_RST_t newValue);
-status_t LIS3MDL_MAG_R_SoftRST(void *handle, LIS3MDL_MAG_SOFT_RST_t *value);
+mems_status_t  LIS3MDL_MAG_W_SoftRST(void *handle, LIS3MDL_MAG_SOFT_RST_t newValue);
+mems_status_t LIS3MDL_MAG_R_SoftRST(void *handle, LIS3MDL_MAG_SOFT_RST_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG2
@@ -306,8 +306,8 @@ typedef enum {
 } LIS3MDL_MAG_REBOOT_t;
 
 #define  	LIS3MDL_MAG_REBOOT_MASK  	0x08
-status_t  LIS3MDL_MAG_W_Reboot(void *handle, LIS3MDL_MAG_REBOOT_t newValue);
-status_t LIS3MDL_MAG_R_Reboot(void *handle, LIS3MDL_MAG_REBOOT_t *value);
+mems_status_t  LIS3MDL_MAG_W_Reboot(void *handle, LIS3MDL_MAG_REBOOT_t newValue);
+mems_status_t LIS3MDL_MAG_R_Reboot(void *handle, LIS3MDL_MAG_REBOOT_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG3
@@ -321,8 +321,8 @@ typedef enum {
 } LIS3MDL_MAG_SIM_t;
 
 #define  	LIS3MDL_MAG_SIM_MASK  	0x04
-status_t  LIS3MDL_MAG_W_SerialInterfaceMode(void *handle, LIS3MDL_MAG_SIM_t newValue);
-status_t LIS3MDL_MAG_R_SerialInterfaceMode(void *handle, LIS3MDL_MAG_SIM_t *value);
+mems_status_t  LIS3MDL_MAG_W_SerialInterfaceMode(void *handle, LIS3MDL_MAG_SIM_t newValue);
+mems_status_t LIS3MDL_MAG_R_SerialInterfaceMode(void *handle, LIS3MDL_MAG_SIM_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG3
@@ -336,8 +336,8 @@ typedef enum {
 } LIS3MDL_MAG_LP_t;
 
 #define  	LIS3MDL_MAG_LP_MASK  	0x20
-status_t  LIS3MDL_MAG_W_FastLowPowerXYZ(void *handle, LIS3MDL_MAG_LP_t newValue);
-status_t LIS3MDL_MAG_R_FastLowPowerXYZ(void *handle, LIS3MDL_MAG_LP_t *value);
+mems_status_t  LIS3MDL_MAG_W_FastLowPowerXYZ(void *handle, LIS3MDL_MAG_LP_t newValue);
+mems_status_t LIS3MDL_MAG_R_FastLowPowerXYZ(void *handle, LIS3MDL_MAG_LP_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG4
@@ -351,8 +351,8 @@ typedef enum {
 } LIS3MDL_MAG_BLE_t;
 
 #define  	LIS3MDL_MAG_BLE_MASK  	0x02
-status_t  LIS3MDL_MAG_W_LittleBigEndianInversion(void *handle, LIS3MDL_MAG_BLE_t newValue);
-status_t LIS3MDL_MAG_R_LittleBigEndianInversion(void *handle, LIS3MDL_MAG_BLE_t *value);
+mems_status_t  LIS3MDL_MAG_W_LittleBigEndianInversion(void *handle, LIS3MDL_MAG_BLE_t newValue);
+mems_status_t LIS3MDL_MAG_R_LittleBigEndianInversion(void *handle, LIS3MDL_MAG_BLE_t *value);
 
 /*******************************************************************************
 * Register      : CTRL_REG4
@@ -368,8 +368,8 @@ typedef enum {
 } LIS3MDL_MAG_OMZ_t;
 
 #define  	LIS3MDL_MAG_OMZ_MASK  	0x0C
-status_t  LIS3MDL_MAG_W_OperatingModeZ(void *handle, LIS3MDL_MAG_OMZ_t newValue);
-status_t LIS3MDL_MAG_R_OperatingModeZ(void *handle, LIS3MDL_MAG_OMZ_t *value);
+mems_status_t  LIS3MDL_MAG_W_OperatingModeZ(void *handle, LIS3MDL_MAG_OMZ_t newValue);
+mems_status_t LIS3MDL_MAG_R_OperatingModeZ(void *handle, LIS3MDL_MAG_OMZ_t *value);
 
 /*******************************************************************************
 * Register      : STATUS_REG
@@ -383,7 +383,7 @@ typedef enum {
 } LIS3MDL_MAG_XDA_t;
 
 #define  	LIS3MDL_MAG_XDA_MASK  	0x01
-status_t LIS3MDL_MAG_R_NewXData(void *handle, LIS3MDL_MAG_XDA_t *value);
+mems_status_t LIS3MDL_MAG_R_NewXData(void *handle, LIS3MDL_MAG_XDA_t *value);
 
 /*******************************************************************************
 * Register      : STATUS_REG
@@ -397,7 +397,7 @@ typedef enum {
 } LIS3MDL_MAG_YDA_t;
 
 #define  	LIS3MDL_MAG_YDA_MASK  	0x02
-status_t LIS3MDL_MAG_R_NewYData(void *handle, LIS3MDL_MAG_YDA_t *value);
+mems_status_t LIS3MDL_MAG_R_NewYData(void *handle, LIS3MDL_MAG_YDA_t *value);
 
 /*******************************************************************************
 * Register      : STATUS_REG
@@ -411,7 +411,7 @@ typedef enum {
 } LIS3MDL_MAG_ZDA_t;
 
 #define  	LIS3MDL_MAG_ZDA_MASK  	0x04
-status_t LIS3MDL_MAG_R_NewZData(void *handle, LIS3MDL_MAG_ZDA_t *value);
+mems_status_t LIS3MDL_MAG_R_NewZData(void *handle, LIS3MDL_MAG_ZDA_t *value);
 
 /*******************************************************************************
 * Register      : STATUS_REG
@@ -425,7 +425,7 @@ typedef enum {
 } LIS3MDL_MAG_ZYXDA_t;
 
 #define  	LIS3MDL_MAG_ZYXDA_MASK  	0x08
-status_t LIS3MDL_MAG_R_NewXYZData(void *handle, LIS3MDL_MAG_ZYXDA_t *value);
+mems_status_t LIS3MDL_MAG_R_NewXYZData(void *handle, LIS3MDL_MAG_ZYXDA_t *value);
 
 /*******************************************************************************
 * Register      : STATUS_REG
@@ -439,7 +439,7 @@ typedef enum {
 } LIS3MDL_MAG_XOR_t;
 
 #define  	LIS3MDL_MAG_XOR_MASK  	0x10
-status_t LIS3MDL_MAG_R_DataXOverrun(void *handle, LIS3MDL_MAG_XOR_t *value);
+mems_status_t LIS3MDL_MAG_R_DataXOverrun(void *handle, LIS3MDL_MAG_XOR_t *value);
 
 /*******************************************************************************
 * Register      : STATUS_REG
@@ -453,7 +453,7 @@ typedef enum {
 } LIS3MDL_MAG_YOR_t;
 
 #define  	LIS3MDL_MAG_YOR_MASK  	0x20
-status_t LIS3MDL_MAG_R_DataYOverrun(void *handle, LIS3MDL_MAG_YOR_t *value);
+mems_status_t LIS3MDL_MAG_R_DataYOverrun(void *handle, LIS3MDL_MAG_YOR_t *value);
 
 /*******************************************************************************
 * Register      : STATUS_REG
@@ -467,7 +467,7 @@ typedef enum {
 } LIS3MDL_MAG_ZOR_t;
 
 #define  	LIS3MDL_MAG_ZOR_MASK  	0x40
-status_t LIS3MDL_MAG_R_DataZOverrun(void *handle, LIS3MDL_MAG_ZOR_t *value);
+mems_status_t LIS3MDL_MAG_R_DataZOverrun(void *handle, LIS3MDL_MAG_ZOR_t *value);
 
 /*******************************************************************************
 * Register      : STATUS_REG
@@ -481,7 +481,7 @@ typedef enum {
 } LIS3MDL_MAG_ZYXOR_t;
 
 #define  	LIS3MDL_MAG_ZYXOR_MASK  	0x80
-status_t LIS3MDL_MAG_R_DataXYZOverrun(void *handle, LIS3MDL_MAG_ZYXOR_t *value);
+mems_status_t LIS3MDL_MAG_R_DataXYZOverrun(void *handle, LIS3MDL_MAG_ZYXOR_t *value);
 
 /*******************************************************************************
 * Register      : INT_CFG
@@ -495,8 +495,8 @@ typedef enum {
 } LIS3MDL_MAG_IEN_t;
 
 #define  	LIS3MDL_MAG_IEN_MASK  	0x01
-status_t  LIS3MDL_MAG_W_InterruptEnable(void *handle, LIS3MDL_MAG_IEN_t newValue);
-status_t LIS3MDL_MAG_R_InterruptEnable(void *handle, LIS3MDL_MAG_IEN_t *value);
+mems_status_t  LIS3MDL_MAG_W_InterruptEnable(void *handle, LIS3MDL_MAG_IEN_t newValue);
+mems_status_t LIS3MDL_MAG_R_InterruptEnable(void *handle, LIS3MDL_MAG_IEN_t *value);
 
 /*******************************************************************************
 * Register      : INT_CFG
@@ -510,8 +510,8 @@ typedef enum {
 } LIS3MDL_MAG_LIR_t;
 
 #define  	LIS3MDL_MAG_LIR_MASK  	0x02
-status_t  LIS3MDL_MAG_W_LatchInterruptRq(void *handle, LIS3MDL_MAG_LIR_t newValue);
-status_t LIS3MDL_MAG_R_LatchInterruptRq(void *handle, LIS3MDL_MAG_LIR_t *value);
+mems_status_t  LIS3MDL_MAG_W_LatchInterruptRq(void *handle, LIS3MDL_MAG_LIR_t newValue);
+mems_status_t LIS3MDL_MAG_R_LatchInterruptRq(void *handle, LIS3MDL_MAG_LIR_t *value);
 
 /*******************************************************************************
 * Register      : INT_CFG
@@ -525,8 +525,8 @@ typedef enum {
 } LIS3MDL_MAG_IEA_t;
 
 #define  	LIS3MDL_MAG_IEA_MASK  	0x04
-status_t  LIS3MDL_MAG_W_InterruptActive(void *handle, LIS3MDL_MAG_IEA_t newValue);
-status_t LIS3MDL_MAG_R_InterruptActive(void *handle, LIS3MDL_MAG_IEA_t *value);
+mems_status_t  LIS3MDL_MAG_W_InterruptActive(void *handle, LIS3MDL_MAG_IEA_t newValue);
+mems_status_t LIS3MDL_MAG_R_InterruptActive(void *handle, LIS3MDL_MAG_IEA_t *value);
 
 /*******************************************************************************
 * Register      : INT_CFG
@@ -540,8 +540,8 @@ typedef enum {
 } LIS3MDL_MAG_ZIEN_t;
 
 #define  	LIS3MDL_MAG_ZIEN_MASK  	0x20
-status_t  LIS3MDL_MAG_W_InterruptOnZ(void *handle, LIS3MDL_MAG_ZIEN_t newValue);
-status_t LIS3MDL_MAG_R_InterruptOnZ(void *handle, LIS3MDL_MAG_ZIEN_t *value);
+mems_status_t  LIS3MDL_MAG_W_InterruptOnZ(void *handle, LIS3MDL_MAG_ZIEN_t newValue);
+mems_status_t LIS3MDL_MAG_R_InterruptOnZ(void *handle, LIS3MDL_MAG_ZIEN_t *value);
 
 /*******************************************************************************
 * Register      : INT_CFG
@@ -555,8 +555,8 @@ typedef enum {
 } LIS3MDL_MAG_YIEN_t;
 
 #define  	LIS3MDL_MAG_YIEN_MASK  	0x40
-status_t  LIS3MDL_MAG_W_InterruptOnY(void *handle, LIS3MDL_MAG_YIEN_t newValue);
-status_t LIS3MDL_MAG_R_InterruptOnY(void *handle, LIS3MDL_MAG_YIEN_t *value);
+mems_status_t  LIS3MDL_MAG_W_InterruptOnY(void *handle, LIS3MDL_MAG_YIEN_t newValue);
+mems_status_t LIS3MDL_MAG_R_InterruptOnY(void *handle, LIS3MDL_MAG_YIEN_t *value);
 
 /*******************************************************************************
 * Register      : INT_CFG
@@ -570,8 +570,8 @@ typedef enum {
 } LIS3MDL_MAG_XIEN_t;
 
 #define  	LIS3MDL_MAG_XIEN_MASK  	0x80
-status_t  LIS3MDL_MAG_W_InterruptOnX(void *handle, LIS3MDL_MAG_XIEN_t newValue);
-status_t LIS3MDL_MAG_R_InterruptOnX(void *handle, LIS3MDL_MAG_XIEN_t *value);
+mems_status_t  LIS3MDL_MAG_W_InterruptOnX(void *handle, LIS3MDL_MAG_XIEN_t newValue);
+mems_status_t LIS3MDL_MAG_R_InterruptOnX(void *handle, LIS3MDL_MAG_XIEN_t *value);
 
 /*******************************************************************************
 * Register      : INT_SRC
@@ -585,8 +585,8 @@ typedef enum {
 } LIS3MDL_MAG_INT_t;
 
 #define  	LIS3MDL_MAG_INT_MASK  	0x01
-status_t  LIS3MDL_MAG_W_InterruptFlag(void *handle, LIS3MDL_MAG_INT_t newValue);
-status_t LIS3MDL_MAG_R_InterruptFlag(void *handle, LIS3MDL_MAG_INT_t *value);
+mems_status_t  LIS3MDL_MAG_W_InterruptFlag(void *handle, LIS3MDL_MAG_INT_t newValue);
+mems_status_t LIS3MDL_MAG_R_InterruptFlag(void *handle, LIS3MDL_MAG_INT_t *value);
 
 /*******************************************************************************
 * Register      : INT_SRC
@@ -600,8 +600,8 @@ typedef enum {
 } LIS3MDL_MAG_MROI_t;
 
 #define  	LIS3MDL_MAG_MROI_MASK  	0x02
-status_t  LIS3MDL_MAG_W_MagneticFieldOverflow(void *handle, LIS3MDL_MAG_MROI_t newValue);
-status_t LIS3MDL_MAG_R_MagneticFieldOverflow(void *handle, LIS3MDL_MAG_MROI_t *value);
+mems_status_t  LIS3MDL_MAG_W_MagneticFieldOverflow(void *handle, LIS3MDL_MAG_MROI_t newValue);
+mems_status_t LIS3MDL_MAG_R_MagneticFieldOverflow(void *handle, LIS3MDL_MAG_MROI_t *value);
 
 /*******************************************************************************
 * Register      : INT_SRC
@@ -615,8 +615,8 @@ typedef enum {
 } LIS3MDL_MAG_NTH_Z_t;
 
 #define  	LIS3MDL_MAG_NTH_Z_MASK  	0x04
-status_t  LIS3MDL_MAG_W_NegativeThresholdFlagZ(void *handle, LIS3MDL_MAG_NTH_Z_t newValue);
-status_t LIS3MDL_MAG_R_NegativeThresholdFlagZ(void *handle, LIS3MDL_MAG_NTH_Z_t *value);
+mems_status_t  LIS3MDL_MAG_W_NegativeThresholdFlagZ(void *handle, LIS3MDL_MAG_NTH_Z_t newValue);
+mems_status_t LIS3MDL_MAG_R_NegativeThresholdFlagZ(void *handle, LIS3MDL_MAG_NTH_Z_t *value);
 
 /*******************************************************************************
 * Register      : INT_SRC
@@ -630,8 +630,8 @@ typedef enum {
 } LIS3MDL_MAG_NTH_Y_t;
 
 #define  	LIS3MDL_MAG_NTH_Y_MASK  	0x08
-status_t  LIS3MDL_MAG_W_NegativeThresholdFlagY(void *handle, LIS3MDL_MAG_NTH_Y_t newValue);
-status_t LIS3MDL_MAG_R_NegativeThresholdFlagY(void *handle, LIS3MDL_MAG_NTH_Y_t *value);
+mems_status_t  LIS3MDL_MAG_W_NegativeThresholdFlagY(void *handle, LIS3MDL_MAG_NTH_Y_t newValue);
+mems_status_t LIS3MDL_MAG_R_NegativeThresholdFlagY(void *handle, LIS3MDL_MAG_NTH_Y_t *value);
 
 /*******************************************************************************
 * Register      : INT_SRC
@@ -645,8 +645,8 @@ typedef enum {
 } LIS3MDL_MAG_NTH_X_t;
 
 #define  	LIS3MDL_MAG_NTH_X_MASK  	0x10
-status_t  LIS3MDL_MAG_W_NegativeThresholdFlagX(void *handle, LIS3MDL_MAG_NTH_X_t newValue);
-status_t LIS3MDL_MAG_R_NegativeThresholdFlagX(void *handle, LIS3MDL_MAG_NTH_X_t *value);
+mems_status_t  LIS3MDL_MAG_W_NegativeThresholdFlagX(void *handle, LIS3MDL_MAG_NTH_X_t newValue);
+mems_status_t LIS3MDL_MAG_R_NegativeThresholdFlagX(void *handle, LIS3MDL_MAG_NTH_X_t *value);
 
 /*******************************************************************************
 * Register      : INT_SRC
@@ -660,8 +660,8 @@ typedef enum {
 } LIS3MDL_MAG_PTH_Z_t;
 
 #define  	LIS3MDL_MAG_PTH_Z_MASK  	0x20
-status_t  LIS3MDL_MAG_W_PositiveThresholdFlagZ(void *handle, LIS3MDL_MAG_PTH_Z_t newValue);
-status_t LIS3MDL_MAG_R_PositiveThresholdFlagZ(void *handle, LIS3MDL_MAG_PTH_Z_t *value);
+mems_status_t  LIS3MDL_MAG_W_PositiveThresholdFlagZ(void *handle, LIS3MDL_MAG_PTH_Z_t newValue);
+mems_status_t LIS3MDL_MAG_R_PositiveThresholdFlagZ(void *handle, LIS3MDL_MAG_PTH_Z_t *value);
 
 /*******************************************************************************
 * Register      : INT_SRC
@@ -675,8 +675,8 @@ typedef enum {
 } LIS3MDL_MAG_PTH_Y_t;
 
 #define  	LIS3MDL_MAG_PTH_Y_MASK  	0x40
-status_t  LIS3MDL_MAG_W_PositiveThresholdFlagY(void *handle, LIS3MDL_MAG_PTH_Y_t newValue);
-status_t LIS3MDL_MAG_R_PositiveThresholdFlagY(void *handle, LIS3MDL_MAG_PTH_Y_t *value);
+mems_status_t  LIS3MDL_MAG_W_PositiveThresholdFlagY(void *handle, LIS3MDL_MAG_PTH_Y_t newValue);
+mems_status_t LIS3MDL_MAG_R_PositiveThresholdFlagY(void *handle, LIS3MDL_MAG_PTH_Y_t *value);
 
 /*******************************************************************************
 * Register      : INT_SRC
@@ -690,23 +690,23 @@ typedef enum {
 } LIS3MDL_MAG_PTH_X_t;
 
 #define  	LIS3MDL_MAG_PTH_X_MASK  	0x80
-status_t  LIS3MDL_MAG_W_PositiveThresholdFlagX(void *handle, LIS3MDL_MAG_PTH_X_t newValue);
-status_t LIS3MDL_MAG_R_PositiveThresholdFlagX(void *handle, LIS3MDL_MAG_PTH_X_t *value);
+mems_status_t  LIS3MDL_MAG_W_PositiveThresholdFlagX(void *handle, LIS3MDL_MAG_PTH_X_t newValue);
+mems_status_t LIS3MDL_MAG_R_PositiveThresholdFlagX(void *handle, LIS3MDL_MAG_PTH_X_t *value);
 
 /*******************************************************************************
 * Register      : <REGISTER_L> - <REGISTER_H>
 * Output Type   : Temperature
 * Permission    : RO 
 *******************************************************************************/
-status_t LIS3MDL_MAG_Get_Temperature(void *handle,u8_t *buff); 
+mems_status_t LIS3MDL_MAG_Get_Temperature(void *handle,u8_t *buff); 
 
 /*******************************************************************************
 * Register      : <REGISTER_L> - <REGISTER_H>
 * Output Type   : MagneticThreshold
 * Permission    : RW 
 *******************************************************************************/
-status_t LIS3MDL_MAG_Set_MagneticThreshold(void *handle,u8_t *buff);
-status_t LIS3MDL_MAG_Get_MagneticThreshold(void *handle,u8_t *buff); 
+mems_status_t LIS3MDL_MAG_Set_MagneticThreshold(void *handle,u8_t *buff);
+mems_status_t LIS3MDL_MAG_Get_MagneticThreshold(void *handle,u8_t *buff); 
 
 /*******************************************************************************
 * Register      : Generic - All

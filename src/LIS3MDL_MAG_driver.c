@@ -62,7 +62,7 @@ extern uint8_t LIS3MDL_IO_Read( void *handle, uint8_t ReadAddr, uint8_t *pBuffer
 * Output			: None
 * Return			: Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_WriteReg(void *handle, u8_t Reg, u8_t *Bufp, u16_t len)
+mems_status_t LIS3MDL_MAG_WriteReg(void *handle, u8_t Reg, u8_t *Bufp, u16_t len)
 {
   if ( LIS3MDL_IO_Write( handle, Reg, Bufp, len ) )
     return MEMS_ERROR;
@@ -78,7 +78,7 @@ status_t LIS3MDL_MAG_WriteReg(void *handle, u8_t Reg, u8_t *Bufp, u16_t len)
 * Output			: Data REad
 * Return			: Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_ReadReg(void *handle, u8_t Reg, u8_t *Bufp, u16_t len)
+mems_status_t LIS3MDL_MAG_ReadReg(void *handle, u8_t Reg, u8_t *Bufp, u16_t len)
 {
   if ( LIS3MDL_IO_Read( handle, Reg, Bufp, len ) )
     return MEMS_ERROR;
@@ -95,7 +95,7 @@ status_t LIS3MDL_MAG_ReadReg(void *handle, u8_t Reg, u8_t *Bufp, u16_t len)
 * Output         : Status of WHO_AM_I_BIT 
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_WHO_AM_I_(void *handle, u8_t *value)
+mems_status_t LIS3MDL_MAG_R_WHO_AM_I_(void *handle, u8_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_WHO_AM_I_REG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -113,7 +113,7 @@ status_t LIS3MDL_MAG_R_WHO_AM_I_(void *handle, u8_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_SystemOperatingMode(void *handle, LIS3MDL_MAG_MD_t newValue)
+mems_status_t  LIS3MDL_MAG_W_SystemOperatingMode(void *handle, LIS3MDL_MAG_MD_t newValue)
 {
   u8_t value;
 
@@ -136,7 +136,7 @@ status_t  LIS3MDL_MAG_W_SystemOperatingMode(void *handle, LIS3MDL_MAG_MD_t newVa
 * Output         : Status of MD see LIS3MDL_MAG_MD_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_SystemOperatingMode(void *handle, LIS3MDL_MAG_MD_t *value)
+mems_status_t LIS3MDL_MAG_R_SystemOperatingMode(void *handle, LIS3MDL_MAG_MD_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG3, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -153,7 +153,7 @@ status_t LIS3MDL_MAG_R_SystemOperatingMode(void *handle, LIS3MDL_MAG_MD_t *value
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_BlockDataUpdate(void *handle, LIS3MDL_MAG_BDU_t newValue)
+mems_status_t  LIS3MDL_MAG_W_BlockDataUpdate(void *handle, LIS3MDL_MAG_BDU_t newValue)
 {
   u8_t value;
 
@@ -176,7 +176,7 @@ status_t  LIS3MDL_MAG_W_BlockDataUpdate(void *handle, LIS3MDL_MAG_BDU_t newValue
 * Output         : Status of BDU see LIS3MDL_MAG_BDU_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_BlockDataUpdate(void *handle, LIS3MDL_MAG_BDU_t *value)
+mems_status_t LIS3MDL_MAG_R_BlockDataUpdate(void *handle, LIS3MDL_MAG_BDU_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG5, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -193,7 +193,7 @@ status_t LIS3MDL_MAG_R_BlockDataUpdate(void *handle, LIS3MDL_MAG_BDU_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_FullScale(void *handle, LIS3MDL_MAG_FS_t newValue)
+mems_status_t  LIS3MDL_MAG_W_FullScale(void *handle, LIS3MDL_MAG_FS_t newValue)
 {
   u8_t value;
 
@@ -216,7 +216,7 @@ status_t  LIS3MDL_MAG_W_FullScale(void *handle, LIS3MDL_MAG_FS_t newValue)
 * Output         : Status of FS see LIS3MDL_MAG_FS_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_FullScale(void *handle, LIS3MDL_MAG_FS_t *value)
+mems_status_t LIS3MDL_MAG_R_FullScale(void *handle, LIS3MDL_MAG_FS_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG2, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -233,7 +233,7 @@ status_t LIS3MDL_MAG_R_FullScale(void *handle, LIS3MDL_MAG_FS_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_OutputDataRate(void *handle, LIS3MDL_MAG_DO_t newValue)
+mems_status_t  LIS3MDL_MAG_W_OutputDataRate(void *handle, LIS3MDL_MAG_DO_t newValue)
 {
   u8_t value;
 
@@ -256,7 +256,7 @@ status_t  LIS3MDL_MAG_W_OutputDataRate(void *handle, LIS3MDL_MAG_DO_t newValue)
 * Output         : Status of DO see LIS3MDL_MAG_DO_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_OutputDataRate(void *handle, LIS3MDL_MAG_DO_t *value)
+mems_status_t LIS3MDL_MAG_R_OutputDataRate(void *handle, LIS3MDL_MAG_DO_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG1, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -267,13 +267,13 @@ status_t LIS3MDL_MAG_R_OutputDataRate(void *handle, LIS3MDL_MAG_DO_t *value)
 }
 
 /*******************************************************************************
-* Function Name  : status_t LIS3MDL_MAG_Get_Magnetic(u8_t *buff)
+* Function Name  : mems_status_t LIS3MDL_MAG_Get_Magnetic(u8_t *buff)
 * Description    : Read Magnetic output register
 * Input          : pointer to [u8_t]
 * Output         : Magnetic buffer u8_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_Get_Magnetic(void *handle, u8_t *buff) 
+mems_status_t LIS3MDL_MAG_Get_Magnetic(void *handle, u8_t *buff) 
 {
   u8_t i, j, k;
   u8_t numberOfByteForDimension;
@@ -303,7 +303,7 @@ status_t LIS3MDL_MAG_Get_Magnetic(void *handle, u8_t *buff)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_SelfTest(void *handle, LIS3MDL_MAG_ST_t newValue)
+mems_status_t  LIS3MDL_MAG_W_SelfTest(void *handle, LIS3MDL_MAG_ST_t newValue)
 {
   u8_t value;
 
@@ -326,7 +326,7 @@ status_t  LIS3MDL_MAG_W_SelfTest(void *handle, LIS3MDL_MAG_ST_t newValue)
 * Output         : Status of ST see LIS3MDL_MAG_ST_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_SelfTest(void *handle, LIS3MDL_MAG_ST_t *value)
+mems_status_t LIS3MDL_MAG_R_SelfTest(void *handle, LIS3MDL_MAG_ST_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG1, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -343,7 +343,7 @@ status_t LIS3MDL_MAG_R_SelfTest(void *handle, LIS3MDL_MAG_ST_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_OperatingModeXY(void *handle, LIS3MDL_MAG_OM_t newValue)
+mems_status_t  LIS3MDL_MAG_W_OperatingModeXY(void *handle, LIS3MDL_MAG_OM_t newValue)
 {
   u8_t value;
 
@@ -366,7 +366,7 @@ status_t  LIS3MDL_MAG_W_OperatingModeXY(void *handle, LIS3MDL_MAG_OM_t newValue)
 * Output         : Status of OM see LIS3MDL_MAG_OM_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_OperatingModeXY(void *handle, LIS3MDL_MAG_OM_t *value)
+mems_status_t LIS3MDL_MAG_R_OperatingModeXY(void *handle, LIS3MDL_MAG_OM_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG1, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -383,7 +383,7 @@ status_t LIS3MDL_MAG_R_OperatingModeXY(void *handle, LIS3MDL_MAG_OM_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_TemperatureSensor(void *handle, LIS3MDL_MAG_TEMP_EN_t newValue)
+mems_status_t  LIS3MDL_MAG_W_TemperatureSensor(void *handle, LIS3MDL_MAG_TEMP_EN_t newValue)
 {
   u8_t value;
 
@@ -406,7 +406,7 @@ status_t  LIS3MDL_MAG_W_TemperatureSensor(void *handle, LIS3MDL_MAG_TEMP_EN_t ne
 * Output         : Status of TEMP_EN see LIS3MDL_MAG_TEMP_EN_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_TemperatureSensor(void *handle, LIS3MDL_MAG_TEMP_EN_t *value)
+mems_status_t LIS3MDL_MAG_R_TemperatureSensor(void *handle, LIS3MDL_MAG_TEMP_EN_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG1, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -423,7 +423,7 @@ status_t LIS3MDL_MAG_R_TemperatureSensor(void *handle, LIS3MDL_MAG_TEMP_EN_t *va
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_SoftRST(void *handle, LIS3MDL_MAG_SOFT_RST_t newValue)
+mems_status_t  LIS3MDL_MAG_W_SoftRST(void *handle, LIS3MDL_MAG_SOFT_RST_t newValue)
 {
   u8_t value;
 
@@ -446,7 +446,7 @@ status_t  LIS3MDL_MAG_W_SoftRST(void *handle, LIS3MDL_MAG_SOFT_RST_t newValue)
 * Output         : Status of SOFT_RST see LIS3MDL_MAG_SOFT_RST_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_SoftRST(void *handle, LIS3MDL_MAG_SOFT_RST_t *value)
+mems_status_t LIS3MDL_MAG_R_SoftRST(void *handle, LIS3MDL_MAG_SOFT_RST_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG2, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -463,7 +463,7 @@ status_t LIS3MDL_MAG_R_SoftRST(void *handle, LIS3MDL_MAG_SOFT_RST_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_Reboot(void *handle, LIS3MDL_MAG_REBOOT_t newValue)
+mems_status_t  LIS3MDL_MAG_W_Reboot(void *handle, LIS3MDL_MAG_REBOOT_t newValue)
 {
   u8_t value;
 
@@ -486,7 +486,7 @@ status_t  LIS3MDL_MAG_W_Reboot(void *handle, LIS3MDL_MAG_REBOOT_t newValue)
 * Output         : Status of REBOOT see LIS3MDL_MAG_REBOOT_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_Reboot(void *handle, LIS3MDL_MAG_REBOOT_t *value)
+mems_status_t LIS3MDL_MAG_R_Reboot(void *handle, LIS3MDL_MAG_REBOOT_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG2, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -504,7 +504,7 @@ status_t LIS3MDL_MAG_R_Reboot(void *handle, LIS3MDL_MAG_REBOOT_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_SerialInterfaceMode(void *handle, LIS3MDL_MAG_SIM_t newValue)
+mems_status_t  LIS3MDL_MAG_W_SerialInterfaceMode(void *handle, LIS3MDL_MAG_SIM_t newValue)
 {
   u8_t value;
 
@@ -527,7 +527,7 @@ status_t  LIS3MDL_MAG_W_SerialInterfaceMode(void *handle, LIS3MDL_MAG_SIM_t newV
 * Output         : Status of SIM see LIS3MDL_MAG_SIM_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_SerialInterfaceMode(void *handle, LIS3MDL_MAG_SIM_t *value)
+mems_status_t LIS3MDL_MAG_R_SerialInterfaceMode(void *handle, LIS3MDL_MAG_SIM_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG3, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -544,7 +544,7 @@ status_t LIS3MDL_MAG_R_SerialInterfaceMode(void *handle, LIS3MDL_MAG_SIM_t *valu
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_FastLowPowerXYZ(void *handle, LIS3MDL_MAG_LP_t newValue)
+mems_status_t  LIS3MDL_MAG_W_FastLowPowerXYZ(void *handle, LIS3MDL_MAG_LP_t newValue)
 {
   u8_t value;
 
@@ -567,7 +567,7 @@ status_t  LIS3MDL_MAG_W_FastLowPowerXYZ(void *handle, LIS3MDL_MAG_LP_t newValue)
 * Output         : Status of LP see LIS3MDL_MAG_LP_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_FastLowPowerXYZ(void *handle, LIS3MDL_MAG_LP_t *value)
+mems_status_t LIS3MDL_MAG_R_FastLowPowerXYZ(void *handle, LIS3MDL_MAG_LP_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG3, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -584,7 +584,7 @@ status_t LIS3MDL_MAG_R_FastLowPowerXYZ(void *handle, LIS3MDL_MAG_LP_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_LittleBigEndianInversion(void *handle, LIS3MDL_MAG_BLE_t newValue)
+mems_status_t  LIS3MDL_MAG_W_LittleBigEndianInversion(void *handle, LIS3MDL_MAG_BLE_t newValue)
 {
   u8_t value;
 
@@ -607,7 +607,7 @@ status_t  LIS3MDL_MAG_W_LittleBigEndianInversion(void *handle, LIS3MDL_MAG_BLE_t
 * Output         : Status of BLE see LIS3MDL_MAG_BLE_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_LittleBigEndianInversion(void *handle, LIS3MDL_MAG_BLE_t *value)
+mems_status_t LIS3MDL_MAG_R_LittleBigEndianInversion(void *handle, LIS3MDL_MAG_BLE_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG4, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -624,7 +624,7 @@ status_t LIS3MDL_MAG_R_LittleBigEndianInversion(void *handle, LIS3MDL_MAG_BLE_t 
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_OperatingModeZ(void *handle, LIS3MDL_MAG_OMZ_t newValue)
+mems_status_t  LIS3MDL_MAG_W_OperatingModeZ(void *handle, LIS3MDL_MAG_OMZ_t newValue)
 {
   u8_t value;
 
@@ -647,7 +647,7 @@ status_t  LIS3MDL_MAG_W_OperatingModeZ(void *handle, LIS3MDL_MAG_OMZ_t newValue)
 * Output         : Status of OMZ see LIS3MDL_MAG_OMZ_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_OperatingModeZ(void *handle, LIS3MDL_MAG_OMZ_t *value)
+mems_status_t LIS3MDL_MAG_R_OperatingModeZ(void *handle, LIS3MDL_MAG_OMZ_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_CTRL_REG4, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -664,7 +664,7 @@ status_t LIS3MDL_MAG_R_OperatingModeZ(void *handle, LIS3MDL_MAG_OMZ_t *value)
 * Output         : Status of XDA see LIS3MDL_MAG_XDA_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_NewXData(void *handle, LIS3MDL_MAG_XDA_t *value)
+mems_status_t LIS3MDL_MAG_R_NewXData(void *handle, LIS3MDL_MAG_XDA_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_STATUS_REG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -681,7 +681,7 @@ status_t LIS3MDL_MAG_R_NewXData(void *handle, LIS3MDL_MAG_XDA_t *value)
 * Output         : Status of YDA see LIS3MDL_MAG_YDA_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_NewYData(void *handle, LIS3MDL_MAG_YDA_t *value)
+mems_status_t LIS3MDL_MAG_R_NewYData(void *handle, LIS3MDL_MAG_YDA_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_STATUS_REG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -698,7 +698,7 @@ status_t LIS3MDL_MAG_R_NewYData(void *handle, LIS3MDL_MAG_YDA_t *value)
 * Output         : Status of ZDA see LIS3MDL_MAG_ZDA_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_NewZData(void *handle, LIS3MDL_MAG_ZDA_t *value)
+mems_status_t LIS3MDL_MAG_R_NewZData(void *handle, LIS3MDL_MAG_ZDA_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_STATUS_REG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -715,7 +715,7 @@ status_t LIS3MDL_MAG_R_NewZData(void *handle, LIS3MDL_MAG_ZDA_t *value)
 * Output         : Status of ZYXDA see LIS3MDL_MAG_ZYXDA_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_NewXYZData(void *handle, LIS3MDL_MAG_ZYXDA_t *value)
+mems_status_t LIS3MDL_MAG_R_NewXYZData(void *handle, LIS3MDL_MAG_ZYXDA_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_STATUS_REG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -732,7 +732,7 @@ status_t LIS3MDL_MAG_R_NewXYZData(void *handle, LIS3MDL_MAG_ZYXDA_t *value)
 * Output         : Status of XOR see LIS3MDL_MAG_XOR_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_DataXOverrun(void *handle, LIS3MDL_MAG_XOR_t *value)
+mems_status_t LIS3MDL_MAG_R_DataXOverrun(void *handle, LIS3MDL_MAG_XOR_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_STATUS_REG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -749,7 +749,7 @@ status_t LIS3MDL_MAG_R_DataXOverrun(void *handle, LIS3MDL_MAG_XOR_t *value)
 * Output         : Status of YOR see LIS3MDL_MAG_YOR_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_DataYOverrun(void *handle, LIS3MDL_MAG_YOR_t *value)
+mems_status_t LIS3MDL_MAG_R_DataYOverrun(void *handle, LIS3MDL_MAG_YOR_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_STATUS_REG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -766,7 +766,7 @@ status_t LIS3MDL_MAG_R_DataYOverrun(void *handle, LIS3MDL_MAG_YOR_t *value)
 * Output         : Status of ZOR see LIS3MDL_MAG_ZOR_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_DataZOverrun(void *handle, LIS3MDL_MAG_ZOR_t *value)
+mems_status_t LIS3MDL_MAG_R_DataZOverrun(void *handle, LIS3MDL_MAG_ZOR_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_STATUS_REG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -783,7 +783,7 @@ status_t LIS3MDL_MAG_R_DataZOverrun(void *handle, LIS3MDL_MAG_ZOR_t *value)
 * Output         : Status of ZYXOR see LIS3MDL_MAG_ZYXOR_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_DataXYZOverrun(void *handle, LIS3MDL_MAG_ZYXOR_t *value)
+mems_status_t LIS3MDL_MAG_R_DataXYZOverrun(void *handle, LIS3MDL_MAG_ZYXOR_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_STATUS_REG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -800,7 +800,7 @@ status_t LIS3MDL_MAG_R_DataXYZOverrun(void *handle, LIS3MDL_MAG_ZYXOR_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_InterruptEnable(void *handle, LIS3MDL_MAG_IEN_t newValue)
+mems_status_t  LIS3MDL_MAG_W_InterruptEnable(void *handle, LIS3MDL_MAG_IEN_t newValue)
 {
   u8_t value;
 
@@ -823,7 +823,7 @@ status_t  LIS3MDL_MAG_W_InterruptEnable(void *handle, LIS3MDL_MAG_IEN_t newValue
 * Output         : Status of IEN see LIS3MDL_MAG_IEN_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_InterruptEnable(void *handle, LIS3MDL_MAG_IEN_t *value)
+mems_status_t LIS3MDL_MAG_R_InterruptEnable(void *handle, LIS3MDL_MAG_IEN_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_CFG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -840,7 +840,7 @@ status_t LIS3MDL_MAG_R_InterruptEnable(void *handle, LIS3MDL_MAG_IEN_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_LatchInterruptRq(void *handle, LIS3MDL_MAG_LIR_t newValue)
+mems_status_t  LIS3MDL_MAG_W_LatchInterruptRq(void *handle, LIS3MDL_MAG_LIR_t newValue)
 {
   u8_t value;
 
@@ -863,7 +863,7 @@ status_t  LIS3MDL_MAG_W_LatchInterruptRq(void *handle, LIS3MDL_MAG_LIR_t newValu
 * Output         : Status of LIR see LIS3MDL_MAG_LIR_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_LatchInterruptRq(void *handle, LIS3MDL_MAG_LIR_t *value)
+mems_status_t LIS3MDL_MAG_R_LatchInterruptRq(void *handle, LIS3MDL_MAG_LIR_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_CFG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -880,7 +880,7 @@ status_t LIS3MDL_MAG_R_LatchInterruptRq(void *handle, LIS3MDL_MAG_LIR_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_InterruptActive(void *handle, LIS3MDL_MAG_IEA_t newValue)
+mems_status_t  LIS3MDL_MAG_W_InterruptActive(void *handle, LIS3MDL_MAG_IEA_t newValue)
 {
   u8_t value;
 
@@ -903,7 +903,7 @@ status_t  LIS3MDL_MAG_W_InterruptActive(void *handle, LIS3MDL_MAG_IEA_t newValue
 * Output         : Status of IEA see LIS3MDL_MAG_IEA_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_InterruptActive(void *handle, LIS3MDL_MAG_IEA_t *value)
+mems_status_t LIS3MDL_MAG_R_InterruptActive(void *handle, LIS3MDL_MAG_IEA_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_CFG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -920,7 +920,7 @@ status_t LIS3MDL_MAG_R_InterruptActive(void *handle, LIS3MDL_MAG_IEA_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_InterruptOnZ(void *handle, LIS3MDL_MAG_ZIEN_t newValue)
+mems_status_t  LIS3MDL_MAG_W_InterruptOnZ(void *handle, LIS3MDL_MAG_ZIEN_t newValue)
 {
   u8_t value;
 
@@ -943,7 +943,7 @@ status_t  LIS3MDL_MAG_W_InterruptOnZ(void *handle, LIS3MDL_MAG_ZIEN_t newValue)
 * Output         : Status of ZIEN see LIS3MDL_MAG_ZIEN_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_InterruptOnZ(void *handle, LIS3MDL_MAG_ZIEN_t *value)
+mems_status_t LIS3MDL_MAG_R_InterruptOnZ(void *handle, LIS3MDL_MAG_ZIEN_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_CFG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -960,7 +960,7 @@ status_t LIS3MDL_MAG_R_InterruptOnZ(void *handle, LIS3MDL_MAG_ZIEN_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_InterruptOnY(void *handle, LIS3MDL_MAG_YIEN_t newValue)
+mems_status_t  LIS3MDL_MAG_W_InterruptOnY(void *handle, LIS3MDL_MAG_YIEN_t newValue)
 {
   u8_t value;
 
@@ -983,7 +983,7 @@ status_t  LIS3MDL_MAG_W_InterruptOnY(void *handle, LIS3MDL_MAG_YIEN_t newValue)
 * Output         : Status of YIEN see LIS3MDL_MAG_YIEN_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_InterruptOnY(void *handle, LIS3MDL_MAG_YIEN_t *value)
+mems_status_t LIS3MDL_MAG_R_InterruptOnY(void *handle, LIS3MDL_MAG_YIEN_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_CFG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -1000,7 +1000,7 @@ status_t LIS3MDL_MAG_R_InterruptOnY(void *handle, LIS3MDL_MAG_YIEN_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_InterruptOnX(void *handle, LIS3MDL_MAG_XIEN_t newValue)
+mems_status_t  LIS3MDL_MAG_W_InterruptOnX(void *handle, LIS3MDL_MAG_XIEN_t newValue)
 {
   u8_t value;
 
@@ -1023,7 +1023,7 @@ status_t  LIS3MDL_MAG_W_InterruptOnX(void *handle, LIS3MDL_MAG_XIEN_t newValue)
 * Output         : Status of XIEN see LIS3MDL_MAG_XIEN_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_InterruptOnX(void *handle, LIS3MDL_MAG_XIEN_t *value)
+mems_status_t LIS3MDL_MAG_R_InterruptOnX(void *handle, LIS3MDL_MAG_XIEN_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_CFG, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -1040,7 +1040,7 @@ status_t LIS3MDL_MAG_R_InterruptOnX(void *handle, LIS3MDL_MAG_XIEN_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_InterruptFlag(void *handle, LIS3MDL_MAG_INT_t newValue)
+mems_status_t  LIS3MDL_MAG_W_InterruptFlag(void *handle, LIS3MDL_MAG_INT_t newValue)
 {
   u8_t value;
 
@@ -1063,7 +1063,7 @@ status_t  LIS3MDL_MAG_W_InterruptFlag(void *handle, LIS3MDL_MAG_INT_t newValue)
 * Output         : Status of INT see LIS3MDL_MAG_INT_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_InterruptFlag(void *handle, LIS3MDL_MAG_INT_t *value)
+mems_status_t LIS3MDL_MAG_R_InterruptFlag(void *handle, LIS3MDL_MAG_INT_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_SRC, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -1080,7 +1080,7 @@ status_t LIS3MDL_MAG_R_InterruptFlag(void *handle, LIS3MDL_MAG_INT_t *value)
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_MagneticFieldOverflow(void *handle, LIS3MDL_MAG_MROI_t newValue)
+mems_status_t  LIS3MDL_MAG_W_MagneticFieldOverflow(void *handle, LIS3MDL_MAG_MROI_t newValue)
 {
   u8_t value;
 
@@ -1103,7 +1103,7 @@ status_t  LIS3MDL_MAG_W_MagneticFieldOverflow(void *handle, LIS3MDL_MAG_MROI_t n
 * Output         : Status of MROI see LIS3MDL_MAG_MROI_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_MagneticFieldOverflow(void *handle, LIS3MDL_MAG_MROI_t *value)
+mems_status_t LIS3MDL_MAG_R_MagneticFieldOverflow(void *handle, LIS3MDL_MAG_MROI_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_SRC, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -1120,7 +1120,7 @@ status_t LIS3MDL_MAG_R_MagneticFieldOverflow(void *handle, LIS3MDL_MAG_MROI_t *v
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_NegativeThresholdFlagZ(void *handle, LIS3MDL_MAG_NTH_Z_t newValue)
+mems_status_t  LIS3MDL_MAG_W_NegativeThresholdFlagZ(void *handle, LIS3MDL_MAG_NTH_Z_t newValue)
 {
   u8_t value;
 
@@ -1143,7 +1143,7 @@ status_t  LIS3MDL_MAG_W_NegativeThresholdFlagZ(void *handle, LIS3MDL_MAG_NTH_Z_t
 * Output         : Status of NTH_Z see LIS3MDL_MAG_NTH_Z_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_NegativeThresholdFlagZ(void *handle, LIS3MDL_MAG_NTH_Z_t *value)
+mems_status_t LIS3MDL_MAG_R_NegativeThresholdFlagZ(void *handle, LIS3MDL_MAG_NTH_Z_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_SRC, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -1160,7 +1160,7 @@ status_t LIS3MDL_MAG_R_NegativeThresholdFlagZ(void *handle, LIS3MDL_MAG_NTH_Z_t 
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_NegativeThresholdFlagY(void *handle, LIS3MDL_MAG_NTH_Y_t newValue)
+mems_status_t  LIS3MDL_MAG_W_NegativeThresholdFlagY(void *handle, LIS3MDL_MAG_NTH_Y_t newValue)
 {
   u8_t value;
 
@@ -1183,7 +1183,7 @@ status_t  LIS3MDL_MAG_W_NegativeThresholdFlagY(void *handle, LIS3MDL_MAG_NTH_Y_t
 * Output         : Status of NTH_Y see LIS3MDL_MAG_NTH_Y_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_NegativeThresholdFlagY(void *handle, LIS3MDL_MAG_NTH_Y_t *value)
+mems_status_t LIS3MDL_MAG_R_NegativeThresholdFlagY(void *handle, LIS3MDL_MAG_NTH_Y_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_SRC, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -1200,7 +1200,7 @@ status_t LIS3MDL_MAG_R_NegativeThresholdFlagY(void *handle, LIS3MDL_MAG_NTH_Y_t 
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_NegativeThresholdFlagX(void *handle, LIS3MDL_MAG_NTH_X_t newValue)
+mems_status_t  LIS3MDL_MAG_W_NegativeThresholdFlagX(void *handle, LIS3MDL_MAG_NTH_X_t newValue)
 {
   u8_t value;
 
@@ -1223,7 +1223,7 @@ status_t  LIS3MDL_MAG_W_NegativeThresholdFlagX(void *handle, LIS3MDL_MAG_NTH_X_t
 * Output         : Status of NTH_X see LIS3MDL_MAG_NTH_X_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_NegativeThresholdFlagX(void *handle, LIS3MDL_MAG_NTH_X_t *value)
+mems_status_t LIS3MDL_MAG_R_NegativeThresholdFlagX(void *handle, LIS3MDL_MAG_NTH_X_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_SRC, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -1240,7 +1240,7 @@ status_t LIS3MDL_MAG_R_NegativeThresholdFlagX(void *handle, LIS3MDL_MAG_NTH_X_t 
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_PositiveThresholdFlagZ(void *handle, LIS3MDL_MAG_PTH_Z_t newValue)
+mems_status_t  LIS3MDL_MAG_W_PositiveThresholdFlagZ(void *handle, LIS3MDL_MAG_PTH_Z_t newValue)
 {
   u8_t value;
 
@@ -1263,7 +1263,7 @@ status_t  LIS3MDL_MAG_W_PositiveThresholdFlagZ(void *handle, LIS3MDL_MAG_PTH_Z_t
 * Output         : Status of PTH_Z see LIS3MDL_MAG_PTH_Z_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_PositiveThresholdFlagZ(void *handle, LIS3MDL_MAG_PTH_Z_t *value)
+mems_status_t LIS3MDL_MAG_R_PositiveThresholdFlagZ(void *handle, LIS3MDL_MAG_PTH_Z_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_SRC, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -1280,7 +1280,7 @@ status_t LIS3MDL_MAG_R_PositiveThresholdFlagZ(void *handle, LIS3MDL_MAG_PTH_Z_t 
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_PositiveThresholdFlagY(void *handle, LIS3MDL_MAG_PTH_Y_t newValue)
+mems_status_t  LIS3MDL_MAG_W_PositiveThresholdFlagY(void *handle, LIS3MDL_MAG_PTH_Y_t newValue)
 {
   u8_t value;
 
@@ -1303,7 +1303,7 @@ status_t  LIS3MDL_MAG_W_PositiveThresholdFlagY(void *handle, LIS3MDL_MAG_PTH_Y_t
 * Output         : Status of PTH_Y see LIS3MDL_MAG_PTH_Y_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_PositiveThresholdFlagY(void *handle, LIS3MDL_MAG_PTH_Y_t *value)
+mems_status_t LIS3MDL_MAG_R_PositiveThresholdFlagY(void *handle, LIS3MDL_MAG_PTH_Y_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_SRC, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -1320,7 +1320,7 @@ status_t LIS3MDL_MAG_R_PositiveThresholdFlagY(void *handle, LIS3MDL_MAG_PTH_Y_t 
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t  LIS3MDL_MAG_W_PositiveThresholdFlagX(void *handle, LIS3MDL_MAG_PTH_X_t newValue)
+mems_status_t  LIS3MDL_MAG_W_PositiveThresholdFlagX(void *handle, LIS3MDL_MAG_PTH_X_t newValue)
 {
   u8_t value;
 
@@ -1343,7 +1343,7 @@ status_t  LIS3MDL_MAG_W_PositiveThresholdFlagX(void *handle, LIS3MDL_MAG_PTH_X_t
 * Output         : Status of PTH_X see LIS3MDL_MAG_PTH_X_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_R_PositiveThresholdFlagX(void *handle, LIS3MDL_MAG_PTH_X_t *value)
+mems_status_t LIS3MDL_MAG_R_PositiveThresholdFlagX(void *handle, LIS3MDL_MAG_PTH_X_t *value)
 {
  if( !LIS3MDL_MAG_ReadReg(handle, LIS3MDL_MAG_INT_SRC, (u8_t *)value, 1) )
     return MEMS_ERROR;
@@ -1354,13 +1354,13 @@ status_t LIS3MDL_MAG_R_PositiveThresholdFlagX(void *handle, LIS3MDL_MAG_PTH_X_t 
 }
 
 /*******************************************************************************
-* Function Name  : status_t LIS3MDL_MAG_Get_Temperature(u8_t *buff)
+* Function Name  : mems_status_t LIS3MDL_MAG_Get_Temperature(u8_t *buff)
 * Description    : Read Temperature output register
 * Input          : pointer to [u8_t]
 * Output         : Temperature buffer u8_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_Get_Temperature(void *handle, u8_t *buff) 
+mems_status_t LIS3MDL_MAG_Get_Temperature(void *handle, u8_t *buff) 
 {
   u8_t i, j, k;
   u8_t numberOfByteForDimension;
@@ -1383,13 +1383,13 @@ status_t LIS3MDL_MAG_Get_Temperature(void *handle, u8_t *buff)
 
 
 /*******************************************************************************
-* Function Name  : status_t LIS3MDL_MAG_Set_MagneticThreshold(u8_t *buff) 
+* Function Name  : mems_status_t LIS3MDL_MAG_Set_MagneticThreshold(u8_t *buff) 
 * Description    : Set MagneticThreshold data row
 * Input          : pointer to [u8_t]
 * Output         : None
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_Set_MagneticThreshold(void *handle, u8_t *buff) 
+mems_status_t LIS3MDL_MAG_Set_MagneticThreshold(void *handle, u8_t *buff) 
 {
   u8_t  i;
 
@@ -1402,13 +1402,13 @@ status_t LIS3MDL_MAG_Set_MagneticThreshold(void *handle, u8_t *buff)
 }
 
 /*******************************************************************************
-* Function Name  : status_t LIS3MDL_MAG_Get_MagneticThreshold(u8_t *buff)
+* Function Name  : mems_status_t LIS3MDL_MAG_Get_MagneticThreshold(u8_t *buff)
 * Description    : Read MagneticThreshold output register
 * Input          : pointer to [u8_t]
 * Output         : MagneticThreshold buffer u8_t
 * Return         : Status [MEMS_ERROR, MEMS_SUCCESS]
 *******************************************************************************/
-status_t LIS3MDL_MAG_Get_MagneticThreshold(void *handle, u8_t *buff) 
+mems_status_t LIS3MDL_MAG_Get_MagneticThreshold(void *handle, u8_t *buff) 
 {
   u8_t i, j, k;
   u8_t numberOfByteForDimension;
