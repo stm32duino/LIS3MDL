@@ -41,7 +41,6 @@
 #include "Arduino.h"
 #include "Wire.h"
 #include "LIS3MDLSensor.h"
-#include "LIS3MDL_MAG_driver.h"
 
 
 /* Class Implementation ------------------------------------------------------*/
@@ -93,7 +92,7 @@ LIS3MDLSensor::LIS3MDLSensor(TwoWire *i2c) : dev_i2c(i2c)
  * @param i2c object of an helper class which handles the I2C peripheral
  * @param address the address of the component's instance
  */
-LIS3MDLSensor::LIS3MDLSensor(TwoWire *i2c, uint8_t address) : address(address), dev_i2c(i2c)
+LIS3MDLSensor::LIS3MDLSensor(TwoWire *i2c, uint8_t address) : dev_i2c(i2c), address(address)
 {
   /* Operating mode selection - power down */
   if ( LIS3MDL_MAG_W_SystemOperatingMode( (void *)this, LIS3MDL_MAG_MD_POWER_DOWN ) == MEMS_ERROR )

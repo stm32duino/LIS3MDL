@@ -45,7 +45,7 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "Wire.h"
-#include "LIS3MDL_MAG_driver.h"
+#include "LIS3MDL_MAG_Driver.h"
 
 /* Defines -------------------------------------------------------------------*/
 #define LIS3MDL_MAG_SENSITIVITY_FOR_FS_4G   0.14  /**< Sensitivity value for 4 gauss full scale [LSB/gauss] */
@@ -133,11 +133,11 @@ class LIS3MDLSensor
     }
 
   private:
-	/* Configuration */
-    uint8_t address;
-
     /* Helper classes. */
     TwoWire *dev_i2c;
+
+	/* Configuration */
+    uint8_t address;
 };
 
 #ifdef __cplusplus
