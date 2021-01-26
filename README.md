@@ -3,21 +3,35 @@ Arduino library to support the LIS3MDL high-performance 3D magnetometer
 
 ## API
 
-This sensor uses I2C to communicate. It is then required to create a TwoWire interface before accessing to the sensors:  
+This sensor uses I2C or SPI to communicate.
+For I2C it is then required to create a TwoWire interface before accessing to the sensors:  
 
-    dev_i2c = new TwoWire(I2C2_SDA, I2C2_SCL);  
-    dev_i2c->begin();  
+    TwoWire dev_i2c(I2C_SDA, I2C_SCL);  
+    dev_i2c.begin();
 
-An instance can be created and enbaled following the procedure below:  
+For SPI it is then required to create a SPI interface before accessing to the sensors:  
 
-    Magneto = new LIS3MDLSensor(dev_i2c);  
-    Magneto->Enable();  
+    SPIClass dev_spi(SPI_MOSI, SPI_MISO, SPI_SCK);  
+    dev_spi.begin();
+
+An instance can be created and enabled when the I2C bus is used following the procedure below:  
+
+    LIS3MDLSensor Magneto(&dev_i2c);
+    Magneto.begin();
+    Magneto.Enable();
+
+An instance can be created and enabled when the SPI bus is used following the procedure below:  
+
+    LIS3MDLSensor Magneto(&dev_spi, CS_PIN);
+    Magneto.begin();
+    Magneto.Enable();
 
 The access to the sensor values is done as explained below:  
 
   Read magnetometer.  
 
-    Magneto->GetAxes(magnetometer);  
+    int32_t magnetometer[3];
+    Magneto.GetAxes(magnetometer);  
 
 ## Documentation
 

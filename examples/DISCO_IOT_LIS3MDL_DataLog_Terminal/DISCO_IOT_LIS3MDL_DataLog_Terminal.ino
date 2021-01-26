@@ -47,8 +47,8 @@
 #define I2C2_SDA    PB11
 
 // Components.
-LIS3MDLSensor *Magneto;
-TwoWire *dev_i2c;
+TwoWire dev_i2c(I2C2_SDA, I2C2_SCL);
+LIS3MDLSensor Magneto(&dev_i2c);
 
 void setup() {
   // Led.
@@ -57,12 +57,11 @@ void setup() {
   SerialPort.begin(9600);
 
   // Initialize I2C bus.
-  dev_i2c = new TwoWire(I2C2_SDA, I2C2_SCL);
-  dev_i2c->begin();
+  dev_i2c.begin();
 
-  // Initlialize components.
-  Magneto = new LIS3MDLSensor(dev_i2c);
-  Magneto->Enable();
+  // Initialize components.
+  Magneto.begin();
+  Magneto.Enable();
 }
 
 void loop() {
@@ -74,7 +73,7 @@ void loop() {
 
   // Read magnetometer.
   int32_t magnetometer[3];
-  Magneto->GetAxes(magnetometer);
+  Magneto.GetAxes(magnetometer);
 
   // Output data.
   SerialPort.print("Mag[mGauss]: ");
